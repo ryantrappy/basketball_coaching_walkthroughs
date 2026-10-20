@@ -1,0 +1,12 @@
+node_modules
+dist
+.git
+.codex
+.agents
+.claude
+.junie
+test-results
+playwright-report
+.idea
+.env
+.env.*
