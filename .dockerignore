@@ -10,3 +10,4 @@ playwright-report
 .idea
 .env
 .env.*
+dist-server
