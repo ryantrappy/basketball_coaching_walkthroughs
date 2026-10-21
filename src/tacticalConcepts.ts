@@ -1,0 +1,126 @@
+import type { DefenseConcept, OffenseConcept } from './types';
+import { frame, steps } from './lessonHelpers';
+
+export const tacticalOffense: OffenseConcept[] = [
+ {id:'zone-high-post',name:'High post & short corner',group:'Zone offense',tag:'Make the middle defender choose',
+ description:'Against a 2–3 zone, enter between the top and bottom lines, then read the center. A short-corner receiver stretches the space behind that defender.',
+ focus:'Watch x5 on the high-post catch. Their step toward the ball can expose the short corner behind them.',
+ frames:[
+  frame({1:[180,355],2:[470,300],3:[50,130],4:[300,265],5:[440,110],6:[210,285],7:[390,280],8:[145,150],9:[465,160],10:[300,130]}),
+  frame({1:[200,340],2:[490,295],3:[50,130],4:[300,230],5:[440,110],6:[235,275],7:[380,270],8:[155,150],9:[465,160],10:[300,150]}),
+  frame({1:[205,345],2:[490,295],3:[50,130],4:[300,220],5:[425,110],6:[245,280],7:[375,270],8:[150,150],9:[485,185],10:[310,185]},4,[1,4]),
+  frame({1:[205,345],2:[490,295],3:[50,130],4:[300,220],5:[390,105],6:[245,280],7:[390,265],8:[175,140],9:[465,155],10:[330,180]},5,[4,5]),
+ ],steps:steps([
+  ['Occupy both lines','4 shows in the high-post gap. 5 stays behind the bottom line on the right; the corner and opposite guard preserve width.','Do not let the high post and short corner stand on one passing line.'],
+  ['Move the top line','1 threatens the wing before feeding 4. Show hands between the guards and the center rather than standing behind a defender.','Enter when the gap exists; do not force the name of the play.'],
+  ['Catch facing the rim','4 catches on balance. Here x5 steps up while x4 stays concerned with the right-side spacing.','See the basket, the short corner, and the weak side in one scan.'],
+  ['Pass behind the center','4 finds 5 behind x5. If the center stays deep, the high-post shot or a quick reversal may be better.','A middle catch is useful because it creates another decision.'],
+ ]),reads:[['Center comes up','Find the short corner or a cutter behind the center before the bottom line recovers.'],['Center stays deep','Take an in-range shot or attack the gap with balance. Do not throw behind a defender who has not moved.'],['Bottom wing takes the short corner','Find the corner or wing that defender left. Re-space after the pass rather than clustering around the catch.']],
+ mistake:'The high post catches with their back to the rim and holds the ball until the zone closes every window.',practice:'Play 4-on-4 against a compact zone shell. Require a high-post touch, then play freely and let the center choose whether to step up.',related:['zone-overload','zone-shift','short-roll'],source:'fiba'},
+ {id:'zone-overload',name:'Overload & skip',group:'Zone offense',tag:'Stretch one side, then reverse it',
+ description:'Put a wing, corner, and short-corner threat on one side of a 2–3 zone. Read which defender takes two jobs, then use the inside pass or the skip behind the shift.',
+ focus:'Watch x4 on the right bottom line. Their position between the corner and short corner determines the next pass.',
+ frames:[
+  frame({1:[300,370],2:[490,280],3:[110,310],4:[550,130],5:[420,110],6:[215,285],7:[385,285],8:[145,150],9:[455,150],10:[300,130]}),
+  frame({1:[300,370],2:[490,280],3:[110,310],4:[550,130],5:[420,110],6:[295,270],7:[455,255],8:[205,145],9:[500,155],10:[340,140]},2,[1,2]),
+  frame({1:[300,365],2:[490,270],3:[100,300],4:[550,130],5:[415,110],6:[310,270],7:[465,245],8:[210,150],9:[515,150],10:[335,145]},2),
+  frame({1:[300,365],2:[490,270],3:[100,300],4:[550,130],5:[390,105],6:[310,270],7:[465,245],8:[230,140],9:[490,145],10:[350,130]},5,[2,5]),
+ ],steps:steps([
+  ['Build three distinct threats','2 has the wing, 4 the corner, and 5 the short corner. 3 stays on the far side as a reversal target.','An overload needs usable gaps, not three teammates in one corner.'],
+  ['Shift the zone','1 passes to 2. The top and bottom defenders slide toward the ball while 5 stays behind their vision.','Move the ball before the zone can settle on every assignment.'],
+  ['Read the bottom wing','Here x4 stays with the deep corner. 2 can see 5 between that defender and the center.','Choose the pass from the defender’s commitment.'],
+  ['Enter behind the shift','2 finds 5 in this example. If the bottom line closes inside, reverse through 1 or skip to 3 before the zone travels back.','The skip is a counter to a shift, not a pass to throw through any traffic.'],
+ ]),reads:[['Bottom wing stays wide','Look for the short corner behind the gap, with the center still in view.'],['Center and bottom wing pinch inside','The perimeter opens. Reverse quickly or skip across the zone if the flight path is clear.'],['Zone traps the wing','Keep a high safety outlet and move before the trap closes. Do not pick up the ball without an escape angle.']],
+ mistake:'Holding on the wing while everyone watches. The zone can cover an overload once the ball stops moving.',practice:'Play 5-on-5 against a 2–3 zone. Let the bottom wing choose corner or short corner; the passer must identify that choice before the entry.',related:['zone-high-post','zone-shift','drive-kick'],source:'fiba'},
+ {id:'two-on-one',name:'2-on-1 transition',group:'Transition offense',tag:'Make one defender guard the ball',visiblePlayers:[1,2,6],
+ description:'Attack the rim with width and make the lone defender commit. Pass when they stop the ball; finish when they stay with your teammate.',
+ focus:'Watch x1’s chest. The ball handler needs to draw a real commitment before delivering the pass.',
+ frames:[
+  frame({1:[220,410],2:[430,360],6:[300,200]}),frame({1:[235,300],2:[420,240],6:[300,175]}),
+  frame({1:[250,190],2:[390,125],6:[270,145]}),frame({1:[260,145],2:[350,105],6:[285,130]},2,[1,2]),
+ ],steps:steps([
+  ['Run separate lanes','1 advances with the ball as 2 runs wide enough to stretch x1, then angles toward a catch near the rim.','Width creates the pass; endless width can make it too long.'],
+  ['Threaten a finish','1 attacks downhill with a live dribble. 2 stays visible and avoids arriving behind the backboard.','A handler who never threatens to score is easy to guard.'],
+  ['Read the commitment','x1 steps toward 1 in this possession. 2 presents hands beyond that commitment.','See the hands and chest, not just the defender’s head fake.'],
+  ['Deliver for the finish','1 passes to 2 after drawing the defender. If x1 stays in the passing lane, 1 keeps the finish instead.','Give your teammate a catch they can finish without resetting.'],
+ ]),reads:[['Defender stops the ball','Pass around the committed defender to the runner. Avoid a late jump-pass into their hands.'],['Defender stays with the runner','Finish under control. Do not force a pass just because it is a numbers advantage.'],['A second defender recovers','Reassess the advantage. Use a trail or flow into half-court spacing rather than forcing the original two-on-one.']],
+ mistake:'Passing before the defender commits, allowing them to recover directly to the receiver.',practice:'Run live 2-on-1 from half court. Let the defender fake at the ball or stay home; reward the decision and quality of the catch.',related:['three-on-two','transition-matchups','drive-kick'],source:'fiba'},
+ {id:'three-on-two',name:'3-on-2 transition',group:'Transition offense',tag:'Read the top defender, then the rim defender',visiblePlayers:[1,2,3,6,7],
+ description:'Advance through the middle with two wide runners. The first defender stops penetration; the second tries to cover both rim-side receivers. Read them in that order.',
+ focus:'Watch x2 behind the first defender. Their commitment to one runner opens the other side.',
+ frames:[
+  frame({1:[300,410],2:[500,340],3:[100,340],6:[300,270],7:[300,130]}),
+  frame({1:[300,340],2:[500,240],3:[100,240],6:[300,265],7:[320,140]}),
+  frame({1:[300,245],2:[450,170],3:[120,150],6:[300,215],7:[385,140]}),
+  frame({1:[300,240],2:[480,150],3:[235,110],6:[300,205],7:[325,125]},3,[1,3]),
+ ],steps:steps([
+  ['Keep three lanes','1 advances in the middle while 2 and 3 stretch the two defenders. Keep the runners in the passer’s field of view.','Run to create a decision, not simply to arrive at the baseline.'],
+  ['Bring the first defender up','1 threatens the paint. The top defender has to stop the ball before it reaches the rim.','Do not slow down so much that the trailing defense catches up.'],
+  ['Read the second defender','x2 leans toward 2 on the right. 3 continues toward the open left-side catch.','Once the first defender commits, look through to the next one.'],
+  ['Find the open runner','1 finds 3 behind the second defender’s commitment. 2 maintains width in case the ball needs one more pass.','A good first pass can create an even simpler second pass.'],
+ ]),reads:[['Top defender stays deep','Attack the available space or take an in-range pull-up if neither runner has a clean lane.'],['Rim defender takes one runner','Find the opposite runner, then read whether the top defender can recover across.'],['Defense retreats without committing','Keep advancing under control. A numbers advantage is permission to read, not a requirement to force a particular pass.']],
+ mistake:'All three attackers converge into the lane, letting two defenders cover the whole break.',practice:'Play 3-on-2 with one trailing defender released a moment late. The offense has to make a read before the advantage disappears.',related:['two-on-one','drag-screen','transition-matchups'],source:'fiba'},
+ {id:'drag-screen',name:'Early drag screen',group:'Transition offense',tag:'Screen before the defense is organized',screens:{1:[5]},
+ description:'Use the trailing big in an early ball screen while the other three players stretch the floor. Keep the transition pace without running into a crowded paint.',
+ focus:'Watch x5 arriving behind the action. Their position can create a brief window before the defense establishes its coverage.',
+ frames:[
+  frame({1:[180,390],5:[300,420],6:[180,355],10:[300,335]}),
+  frame({1:[180,350],5:[235,350],6:[190,320],10:[280,290]}),
+  frame({1:[330,255],5:[300,215],6:[300,290],10:[315,205]}),
+  frame({1:[370,210],5:[300,115],6:[345,245],8:[160,140],10:[350,175]},5,[1,5]),
+ ],steps:steps([
+  ['Run the floor with width','The corners and wing establish spacing as 5 trails the ball. 1 keeps a live dribble instead of waiting for a set call.','Early offense needs spacing just as much as half-court offense.'],
+  ['Meet the trailing screen','5 gets stationary as 1 approaches. The screen changes the handler’s angle before the big defender gets settled.','Arrive early enough to screen legally.'],
+  ['Attack the late coverage','1 turns downhill while 5 rolls. Read whether the recovering big takes the ball or stays with the roller.','Keep your eyes on the low help as well as the big.'],
+  ['Convert or flow','The example finds 5. If the initial advantage closes, keep the floor spaced and continue into the next action.','Do not turn a delayed break into a forced pass.'],
+ ]),reads:[['Big arrives late','Attack the two-on-one while the guard recovers. The roll may open behind the big’s commitment.'],['Defense switches early','Slip before the exchange commits or play the resulting matchup with width.'],['Low defender tags','Use the corner behind the tag and keep the ball moving against the recovery.']],
+ mistake:'The trailing big screens before the corners clear, bringing extra help directly into the roll lane.',practice:'Start 5-on-5 from a rebound or outlet. Require the trail to offer an early screen, but let the handler reject it if the spacing is poor.',related:['pick-roll','pick-pop','transition-matchups'],source:'fiba'},
+];
+
+export const tacticalDefense: DefenseConcept[] = [
+ {id:'zone-shift',side:'defense',name:'2–3 zone shifts & skip',group:'Zone defense',tag:'Move five defenders on the pass',
+ description:'Slide the two top guards and three bottom defenders as a connected shape. On a skip to the corner, the low wing closes while the center and top guard cover the next inside threats.',
+ focus:'Watch x3 on the skip. The corner closeout works only if the center protects the rim behind it.',
+ frames:[
+  frame({1:[300,370],2:[490,280],3:[50,130],4:[550,130],5:[300,220],6:[220,285],7:[380,285],8:[145,145],9:[455,145],10:[300,130]}),
+  frame({1:[300,370],2:[490,280],3:[50,130],4:[550,130],5:[300,220],6:[300,255],7:[455,250],8:[210,145],9:[430,170],10:[340,140]},2,[1,2]),
+  frame({1:[300,370],2:[490,280],3:[50,130],4:[550,130],5:[300,220],6:[180,230],7:[325,235],8:[95,150],9:[375,150],10:[260,135]},3,[2,3]),
+  frame({1:[300,370],2:[490,280],3:[50,130],4:[550,130],5:[300,220],6:[170,240],7:[300,250],8:[75,155],9:[375,145],10:[260,130]},3),
+ ],steps:steps([
+  ['See the shape and the gaps','x1 and x2 are high, x3 and x4 are the low wings, and x5 protects the middle. Each sees the ball and nearby receivers.','A zone is five connected jobs, not five stationary spots.'],
+  ['Shift on the wing pass','x2 takes the wing. x4 prepares the near corner; the weak-side wing and guard sink into useful help positions.','Move during the pass instead of waiting for the catch.'],
+  ['Rotate on the skip','The ball skips to 3. x3 closes to the corner, x5 shifts behind them, and x1 tracks the high-post return.','Call the corner so two defenders do not chase the same catch.'],
+  ['Contain the next action','x3 arrives balanced. The center protects the rim while the guards remain ready for a reversal or high-post entry.','The rotation has to survive the next pass, drive, and rebound.'],
+ ]),reads:[['Corner drives baseline','The center contains the rim threat while the wing recovers and the far-side bottom defender accounts for cutters.'],['Ball enters the high post','The center and nearest guard coordinate pressure without opening the rim and both corners at once.'],['Offense reverses again','Travel together on the next pass. A single successful slide is not the end of the possession.']],
+ mistake:'The low wing closes to the corner while the center stays on the far side, leaving an unguarded route along the baseline.',practice:'Play 5-on-5 with a high-post player and both corners occupied. Require a skip before live play and finish every rep with a rebound.',related:['zone-high-post','zone-overload','zone-boxout'],source:'defense'},
+ {id:'zone-boxout',side:'defense',name:'Rebounding from a zone',group:'Zone defense',tag:'Find a body after the shot',
+ description:'Zone positioning does not give everyone an automatic box-out matchup. On the shot, locate the nearest threat, make legal contact, and pursue the ball as the guards cover long rebounds.',
+ focus:'Watch x5 and the low wings. Ball watching lets cutters arrive from outside their original zones.',
+ frames:[
+  frame({1:[300,370],2:[490,280],3:[50,130],4:[550,130],5:[300,210],6:[230,275],7:[455,250],8:[150,150],9:[470,165],10:[300,140]},2),
+  frame({1:[300,340],2:[490,280],3:[130,125],4:[450,130],5:[300,175],6:[230,275],7:[460,255],8:[175,130],9:[425,145],10:[300,135]},2),
+  {...frame({1:[300,320],2:[490,280],3:[200,110],4:[370,120],5:[300,160],6:[250,270],7:[440,260],8:[225,125],9:[350,135],10:[300,130]},2),ballPosition:[300,89]},
+  frame({1:[300,320],2:[490,280],3:[220,110],4:[370,120],5:[300,155],6:[260,275],7:[430,255],8:[240,120],9:[345,130],10:[300,105]},10),
+ ],steps:steps([
+  ['Identify the shot and the threats','2 has a wing shot. The zone sees cutters from both corners and the high post, while the top guards cover the perimeter.','Know who can reach you before turning toward the ball.'],
+  ['Leave the zone spot for a body','x3 and x4 locate incoming cutters. x5 finds 5, establishing inside position without holding or pushing.','A spot cannot be boxed out. A nearby rebounder can.'],
+  ['Hold space, then find the ball','The shot goes up. The low defenders keep the threats outside while the guards prepare for a long rebound.','Do not stare at the rim and let an attacker cross your feet.'],
+  ['Secure and outlet','x5 gathers the rebound in this example. Teammates protect the catch and create a safe outlet before running the other way.','The stop is complete when possession is secure.'],
+ ]),reads:[['Corners crash hard','The low wings must locate them early and create legal inside position.'],['Ball rebounds long','The top guards cannot leak out before the rebound is controlled. Read the ball’s flight.'],['A teammate loses their matchup','Call the loose threat and help close the rebounding gap without all five defenders chasing one body.']],
+ mistake:'Remaining in the original zone spot with no contact as the offense runs through for the rebound.',practice:'Play a zone shell that always ends with a shot. Score the defense on locating threats and securing possession, including long rebounds.',related:['zone-shift','transition-matchups','three-on-two'],source:'defense'},
+ {id:'transition-matchups',side:'defense',name:'Get back & match up',group:'Transition defense',tag:'Rim, ball, then the next threat',
+ description:'Recover to stop the immediate score before sorting ideal matchups. Communicate who protects the rim, who stops the ball, and who takes the wide runners and trailers.',
+ focus:'Watch x5 get to the rim before x1 engages the ball. Two defenders chasing the dribbler leave the easiest pass open.',
+ frames:[
+  frame({1:[300,410],2:[520,320],3:[80,320],4:[440,420],5:[200,430],6:[330,340],7:[500,370],8:[150,350],9:[420,440],10:[300,260]}),
+  frame({1:[300,340],2:[520,230],3:[80,220],4:[440,380],5:[200,400],6:[300,290],7:[485,270],8:[145,250],9:[420,355],10:[300,150]}),
+  frame({1:[300,260],2:[520,150],3:[65,140],4:[440,340],5:[200,365],6:[300,225],7:[485,175],8:[105,155],9:[420,310],10:[300,125]}),
+  frame({1:[300,260],2:[520,150],3:[65,140],4:[440,340],5:[200,365],6:[300,230],7:[490,165],8:[95,155],9:[420,310],10:[230,330]}),
+ ],steps:steps([
+  ['Recover inside the ball','The nearest suitable defender heads toward the rim. Others sprint into the ball and runner lanes rather than searching for their original matchup.','Protect the most dangerous space first.'],
+  ['Assign rim and ball','x5 protects the rim while x1 takes the handler. x2 and x3 identify wide runners; x4 finds the trail.','Call “rim,” “ball,” and the next matchup early.'],
+  ['Stop the immediate advantage','x1 contains the ball without gambling. The wings arrive on shooters as x5 remains ready to help against a rim attack.','Do not send two defenders to the ball with nobody behind them.'],
+  ['Match and finish the possession','As the break settles, communicate the temporary matchups. x5 can locate the final trailer once the rim threat is covered.','Stay with a temporary matchup until a safe exchange is agreed.'],
+ ]),reads:[['Only one defender is back','Delay the ball and split the scoring threats long enough for help to arrive. Avoid a desperate steal attempt.'],['A shooter runs to the corner','The wing defender must locate them while the rim defender protects the lane.'],['Matchups are unfavorable','Contain first and organize a safe exchange later. Do not abandon a live scoring threat to find your preferred opponent.']],
+ mistake:'Everyone runs toward the ball, leaving the rim or a wide runner completely unguarded.',practice:'Start 5-on-5 with one defender a step behind. Require audible rim, ball, and runner calls, then play through a shot and rebound.',related:['two-on-one','three-on-two','drag-screen'],source:'defense'},
+];

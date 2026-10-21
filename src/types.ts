@@ -9,17 +9,19 @@ export type Three<T> = [T, T, T];
 export type PlayerPositions = [Point, Point, Point, Point, Point, Point, Point, Point, Point, Point];
 
 export type OffenseId = 'pick-pop' | 'pick-roll' | 'short-roll' | 'spain' | 'drive-kick' | 'handoff'
- | 'empty-corner' | 'ghost-screen' | 'forty-five-cut' | 'hammer';
-export type DefenseId = 'drop-coverage' | 'switch-coverage' | 'blitz-coverage' | 'ice-coverage' | 'tag-xout' | 'closeout-contain';
+ | 'empty-corner' | 'ghost-screen' | 'forty-five-cut' | 'hammer'
+ | 'zone-high-post' | 'zone-overload' | 'two-on-one' | 'three-on-two' | 'drag-screen';
+export type DefenseId = 'drop-coverage' | 'switch-coverage' | 'blitz-coverage' | 'ice-coverage' | 'tag-xout' | 'closeout-contain' | 'zone-shift' | 'zone-boxout' | 'transition-matchups';
 export type InboundsId = 'box-cross' | 'box-sts' | 'stack-release' | 'inbound-return' | 'sideline-zipper' | 'sideline-slip';
 export type ConceptId = OffenseId | DefenseId | InboundsId;
 export type SourceId = 'fiba' | 'spain' | 'ghost' | 'terminology' | 'cuts' | 'defense' | 'inbounds' | 'sideline';
 export type ConceptGroup = 'Ball screens' | 'Two-player actions' | 'Three-player actions' | 'Off-ball spacing'
- | 'Ball-screen defense' | 'Help & rotations' | 'Baseline (BLOB)' | 'Sideline (SLOB)';
+ | 'Ball-screen defense' | 'Help & rotations' | 'Baseline (BLOB)' | 'Sideline (SLOB)' | 'Zone offense' | 'Zone defense' | 'Transition offense' | 'Transition defense';
 
 export interface Frame {
  players: PlayerPositions;
- ball: PlayerId;
+ ball: EntityId;
+ ballPosition?: Point;
  pass: [PlayerId, PlayerId] | null;
 }
 export interface Step { title: string; text: string; cue: string }
@@ -31,6 +33,7 @@ interface LessonContent {
  description: string;
  focus: string;
  frames: Four<Frame>;
+ visiblePlayers?: EntityId[];
  steps: Four<Step>;
  screens?: Partial<Record<StepIndex, PlayerId[]>>;
  reads: [title: string, explanation: string][];
@@ -51,7 +54,7 @@ interface ReadContent {
  example?: boolean;
  safety?: boolean;
  bend?: number;
- kind?: 'drive';
+ kind?: 'drive' | 'shot';
 }
 export type PassingOption = ReadContent & { from?: PlayerId } & (
  {to: PlayerId; point?: never} | {point: Point; to?: never}
@@ -59,3 +62,18 @@ export type PassingOption = ReadContent & { from?: PlayerId } & (
 export type DefensiveOption = ReadContent & { from: DefenderId; to: DefenderId; point?: never };
 export interface PassingDecision { from: PlayerId; start: StepIndex; context?: string; options: Three<PassingOption> }
 export interface DefensiveDecision { from: DefenderId; start: StepIndex; context?: string; options: Three<DefensiveOption> }
+
+export type Decision = PassingDecision | DefensiveDecision;
+export type CoverageId = 'drop' | 'switch' | 'blitz' | 'ice';
+export type ReadGrade = 'strong' | 'viable' | 'risky';
+export interface ReadAnswer { grade: ReadGrade; feedback: string }
+export interface ReadScenario { prompt: string; answers: Three<ReadAnswer> }
+export interface CoverageVariant {
+ id: CoverageId;
+ label: string;
+ description: string;
+ frames: Four<Frame>;
+ steps: Four<Step>;
+ decision: PassingDecision;
+ scenario: ReadScenario;
+}

@@ -3,12 +3,14 @@ import { test, expect } from '@playwright/test';
 const offenseLessons = [
  ['pick-pop','Pick & pop'],['pick-roll','Pick & roll'],['short-roll','Short roll'],['spain','Spain pick & roll'],['drive-kick','Drive & kick spacing'],['handoff','Dribble handoff'],
  ['empty-corner','Empty-corner pick & roll'],['ghost-screen','Ghost screen'],['forty-five-cut','45 cut'],['hammer','Hammer action'],
+ ['zone-high-post','High post & short corner'],['zone-overload','Overload & skip'],['two-on-one','2-on-1 transition'],['three-on-two','3-on-2 transition'],['drag-screen','Early drag screen'],
 ];
 const defenseLessons = [
  ['drop-coverage','Drop coverage'],['switch-coverage','Switching ball screens'],['blitz-coverage','Blitz & rotate'],['ice-coverage','ICE the side screen'],['tag-xout','Low-man tag & X-out'],['closeout-contain','Closeout & contain'],
+ ['zone-shift','2–3 zone shifts & skip'],['zone-boxout','Rebounding from a zone'],['transition-matchups','Get back & match up'],
 ];
 
-test('all sixteen lessons load with four playable frames and contextual reads',async({page})=>{
+test('all twenty-four offense and defense lessons load with four playable frames and contextual reads',async({page})=>{
  const errors: string[]=[];page.on('pageerror',e=>errors.push(e.message));
  for(const [side,lessons] of [['offense',offenseLessons],['defense',defenseLessons]]){
   for(const [id,name] of lessons){

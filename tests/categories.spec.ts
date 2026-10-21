@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 test('play types open one at a time without changing the current possession',async({page})=>{
  await page.goto('/#pick-pop');
  const menu=page.getByRole('navigation',{name:'Basketball concepts'});
- await expect(menu.locator('.group-toggle')).toHaveCount(4);
+ await expect(menu.locator('.group-toggle')).toHaveCount(6);
  await expect(menu.getByRole('button',{name:'Ball screens',exact:true})).toHaveAttribute('aria-expanded','true');
  await expect(menu.locator('.concept-option:visible')).toHaveCount(4);
  await menu.getByRole('button',{name:'Off-ball spacing',exact:true}).click();

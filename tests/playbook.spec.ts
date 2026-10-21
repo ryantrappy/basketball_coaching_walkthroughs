@@ -22,7 +22,7 @@ test('playback, scrubbing, toggles, counters and related navigation', async ({ p
  await expect(page.locator('.defender')).toHaveCount(0);
  await page.getByRole('checkbox',{name:'Show defense'}).check();
  await expect(page.locator('.defender')).toHaveCount(5);
- await page.getByText('Drop',{exact:true}).click();
+ await page.locator('summary').filter({hasText:/^Drop$/}).click();
  await expect(page.locator('details[open]')).toContainText('outside hip');
  await page.locator('.connections').getByRole('button',{name:'Short roll',exact:true}).click();
  await expect(page.getByRole('heading',{name:'Short roll',exact:true})).toBeVisible();

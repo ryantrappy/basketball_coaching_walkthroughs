@@ -1,8 +1,10 @@
+import { tacticalPassingReads } from './tacticalReads';
 import type { OffenseId, InboundsId, PassingDecision, Point } from './types';
 import { inboundsReads } from './inboundsReads';
 // These are conditional choices at the decision point, before the example pass.
 // `to` follows a player as they move; `point` describes an attack toward the rim.
 export const passingReads: Record<OffenseId | InboundsId, PassingDecision> = {
+ ...tacticalPassingReads,
  ...inboundsReads,
  'pick-pop': { from: 1, start: 2, options: [
   { to: 5, title: 'Find the pop', condition: 'When x5 commits to the drive, pass back to 5 outside the arc before the recovery.', example: true, bend: -25 },

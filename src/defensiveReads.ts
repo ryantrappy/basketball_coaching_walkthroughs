@@ -1,6 +1,8 @@
+import { tacticalDefensiveReads } from './tacticalReads';
 import type { DefenseId, DefensiveDecision } from './types';
 // Coordinated responsibilities, rather than alternate passes. Indices 6–10 are x1–x5.
 export const defensiveReads: Record<DefenseId, DefensiveDecision> = {
+ ...tacticalDefensiveReads,
  'drop-coverage': { from:6, start:1, options:[
   {from:6,to:6,title:'Chase over',condition:'x1 fights over and reconnects to the handler’s hip. Recovery lets the big release back to the roller.',example:true},
   {from:10,to:10,title:'Contain two threats',condition:'x5 keeps the ball and roller in view, retreating at a depth that fits the handler’s shooting and the big’s mobility.'},
