@@ -16,6 +16,12 @@ test('production playbook reloads and studies previously unvisited lessons offli
  await expect(page.locator('.read-feedback')).toContainText('Strong read');
  await page.getByRole('slider').fill('3');
  await expect(page.locator('.ball')).toHaveAttribute('transform','translate(409,90)');
+ await page.goto('/#drills/one-two');
+ await expect(page.getByRole('heading',{name:'1–2 catch into shot',exact:true})).toBeVisible();
+ await page.getByRole('button',{name:'Next drill phase',exact:true}).click();
+ await expect(page.locator('.mechanics-svg')).toHaveAttribute('aria-label',/phase 2/);
+ await page.getByLabel('Dominant hand',{exact:true}).selectOption('left');
+ await expect(page.locator('.mechanics-cues')).toContainText('step right then left');
  await context.setOffline(false);
  await expect(page.getByRole('status').first()).toContainText('saved for offline use');
  expect(errors).toEqual([]);

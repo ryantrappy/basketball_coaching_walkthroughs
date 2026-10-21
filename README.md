@@ -1,6 +1,6 @@
 # Second Read
 
-A basketball playbook for experienced players, with separate Offense, Defense, and Inbounds views in one static React app. Built with React, TypeScript, Vite, and SVG. No authentication, backend, API keys, database, analytics, or runtime third-party requests. Fonts ship with the app.
+A basketball playbook for experienced players, with separate Offense, Defense, Inbounds, and Drills views in one static React app. Built with React, TypeScript, Vite, and SVG. No authentication, backend, API keys, database, analytics, or runtime third-party requests. Fonts ship with the app.
 
 Thirty interactive lessons, each with four animated steps, tactical reads, a common mistake, a practice constraint, coaching references, and related concepts.
 
@@ -9,6 +9,17 @@ Thirty interactive lessons, each with four animated steps, tactical reads, a com
 - **Inbounds (6):** baseline box cross-screen, box screen-the-screener, stack releases, inbounder give-and-go, sideline zipper entry, and sideline screen-and-slip.
 
 Use the header navigation to switch views. Each library groups plays into expandable types, such as Ball screens, Help & rotations, or Baseline (BLOB). One category opens at a time; selecting a related lesson, following a bookmark, or using browser history reveals the current lesson’s category automatically. The category buttons support Enter and Space. The app remembers your most recent lesson on each side during the session. Related concepts can link across all three sections. Inbounds lessons include the throw-in spot, an identified inbounder and safety, and conditional entry routes. Defense lessons emphasize the defenders in cyan and let you isolate their coordinated responsibilities.
+
+## Skill drills
+
+The **Drills** section includes 12 sessions, organized by the skill and training goal:
+
+- **Dribbling:** ball control (low-to-high pound, pocket and protect), change direction (crossover exit, split-stance transfer), and change pace (hesitation burst, retreat and re-attack).
+- **Shooting:** shooting touch (one-hand ladder, guide-hand quieting), catch and shoot (1–2 catch, hop catch), and pull-ups (one-dribble pull-up, escape dribble into a shot).
+
+Each drill has four animated body phases, front/side views, a mirrored left-hand example, body-region focus, a court setup, footwork and hand close-ups, a working set, a quality check, a common breakdown, a progression, and links to related plays. The diagrams use articulated SVG poses and interpolate the joints and ball as you play, step, slow down, or scrub. Shooting stance and release height are presented as a useful example rather than universal joint angles. The default playback speed is 0.5×.
+
+Bookmark a drill with a hash such as `#drills/one-two`. Browser history works within the practice library and across playbook sections. Drills are bundled and precached with the rest of the playbook for offline use.
 
 ## Learning modes
 
@@ -96,7 +107,10 @@ docker compose config --quiet
 - `src/OfflineStatus.tsx` and `vite.config.ts`: offline status, update prompts, manifest, and precaching.
 - `public/icons/`: local app icons.
 - `src/lessonHelpers.ts`: shared frame and step constructors.
-- `src/main.tsx`: React UI, SVG court, playback, and interaction logic.
+- `src/main.tsx`: top-level section routing, playbook UI, SVG court, playback, and interaction logic.
+- `src/DrillsApp.tsx` and `src/drills.css`: drill library, practice interface, and responsive layout.
+- `src/drills.ts` and `src/drillTypes.ts`: typed skill sessions, training goals, body cues, and working sets.
+- `src/drillPoses.ts` and `src/MechanicsDiagram.tsx`: articulated body poses, interpolation, mirroring, annotations, and detail diagrams.
 - `src/ConceptMenu.tsx`: accessible category dropdowns and play selection.
 - `src/passingReads.ts`: conditional ball routes, their opening reads, and the step at which they appear.
 - `src/inboundsReads.ts`: entry options and safety outlets, included in the passing-read lookup.
@@ -121,6 +135,6 @@ npm test
 npm run test:server
 ```
 
-Alternatively, use installed Chrome: `PLAYWRIGHT_CHANNEL=chrome npm test`. Tests cover playback ending, speed selection, scrubbing, overlays, coverage expansion, related navigation, all lessons, mobile overflow, dialog keyboard focus, conditional ball routes with isolation and toggles, all thirty lesson routes, defensive assignment isolation, cross-view navigation, history, defensive and inbounds mobile layouts, baseline/sideline category dropdowns, the entry-to-return pass sequence, keyboard category controls, automatic category reveal, coverage changes, player focus, read-trainer concealment, decision stops, and selected outcomes. The Playwright config starts Vite automatically when needed.
+Alternatively, use installed Chrome: `PLAYWRIGHT_CHANNEL=chrome npm test`. Tests cover playback ending, speed selection, scrubbing, overlays, coverage expansion, related navigation, all lessons, mobile overflow, dialog keyboard focus, conditional ball routes with isolation and toggles, all thirty lesson routes, defensive assignment isolation, cross-view navigation, history, defensive and inbounds mobile layouts, baseline/sideline category dropdowns, the entry-to-return pass sequence, keyboard category controls, automatic category reveal, coverage changes, player focus, read-trainer concealment, decision stops, selected outcomes, skill/goal drill navigation, all 48 drill phases, body views, hand mirroring, footwork detail, and drill keyboard controls. The Playwright config starts Vite automatically when needed.
 
-`npm run test:server` builds the project and tests the actual production Node server on port 5180. It verifies HTML/asset delivery, conditional requests, HEAD, missing files, method handling, health checks, React navigation, offline reloads with unvisited lessons, and the explicit update/reload flow. Use `PLAYWRIGHT_CHANNEL=chrome npm run test:server` to run its browser check with installed Chrome.
+`npm run test:server` builds the project and tests the actual production Node server on port 5180. It verifies HTML/asset delivery, conditional requests, HEAD, missing files, method handling, health checks, React navigation, offline reloads with unvisited lessons, the explicit update/reload flow, and full drill playback and hand mirroring offline. Use `PLAYWRIGHT_CHANNEL=chrome npm run test:server` to run its browser check with installed Chrome.

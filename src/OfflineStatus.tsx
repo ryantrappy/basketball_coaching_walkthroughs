@@ -1,22 +1,22 @@
 import { useEffect, useRef, useState } from 'react';
 import { useRegisterSW } from 'virtual:pwa-register/react';
 export default function OfflineStatus(){
- const requestedUpdate=useRef(false);
+ const requestedUpdate=useRef(false),registrationRef=useRef<ServiceWorkerRegistration|null>(null);
  const [online,setOnline]=useState(navigator.onLine),[saved,setSaved]=useState(false),[failed,setFailed]=useState(false);
  const {offlineReady:[ready],needRefresh:[update],updateServiceWorker}=useRegisterSW({
   onRegisterError(){setFailed(true);},
   onRegisteredSW(_url,registration){
-   if(!registration)return;
-   const check=()=>{if(navigator.onLine)void registration.update().catch(()=>{});};
-   window.addEventListener('focus',check);window.addEventListener('online',check);
+   registrationRef.current=registration || null;
   },
  });
  useEffect(()=>{
+  const check=()=>{if(navigator.onLine)void registrationRef.current?.update().catch(()=>{});};
+  window.addEventListener('focus',check);window.addEventListener('online',check);
   const reloadAfterUpdate=()=>{if(requestedUpdate.current)window.location.reload();};
   navigator.serviceWorker?.addEventListener('controllerchange',reloadAfterUpdate);
   const change=()=>setOnline(navigator.onLine);window.addEventListener('online',change);window.addEventListener('offline',change);
   if('serviceWorker' in navigator)void navigator.serviceWorker.getRegistration().then(r=>{if(r?.active)setSaved(true);});
-  return()=>{navigator.serviceWorker?.removeEventListener('controllerchange',reloadAfterUpdate);window.removeEventListener('online',change);window.removeEventListener('offline',change);};
+  return()=>{window.removeEventListener('focus',check);window.removeEventListener('online',check);navigator.serviceWorker?.removeEventListener('controllerchange',reloadAfterUpdate);window.removeEventListener('online',change);window.removeEventListener('offline',change);};
  },[]);
  const applyUpdate=async()=>{
   const registration=await navigator.serviceWorker.getRegistration();
